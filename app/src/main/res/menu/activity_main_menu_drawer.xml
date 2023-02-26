@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+    <item
+        android:title="Learn">
+        <menu>
+            <group
+                android:checkableBehavior="single"
+                >
+                <item
+                    android:id="@+id/activity_main_drawer_numbers"
+                    android:title="Numbers"
+                    android:icon="@drawable/baseline_dialpad_white_48"/>
+                <item
+                    android:id="@+id/activity_main_drawer_animals"
+                    android:title="Animals"
+                    android:icon="@drawable/baseline_pets_white_48"/>
+            </group>
+        </menu>
+
+    </item>
+</menu>

@@ -9,23 +9,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.appbaby.R;
 import com.example.appbaby.controllers.adapter.AnimalsAdapter;
 import com.example.appbaby.controllers.adapter.NumbersAdapter;
 import com.google.android.material.navigation.NavigationView;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
 
-    @BindView(R.id.activity_main_view_pager) ViewPager mViewPager;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         configureToolBar();
         configureDrawerLayout();
         configureNavigationView();
-        ButterKnife.bind(this);
+        configureViewPagerAndTabs();
     }
     private void configureNavigationView() {
         mNavigationView = (NavigationView) findViewById(R.id.activity_main_nav_view);
@@ -58,7 +55,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mToolbar = (Toolbar) findViewById(R.id.activity_main_tool_bar);
         setSupportActionBar(mToolbar);
     }
-
+    private void configureViewPagerAndTabs(){
+        mViewPager = (ViewPager)findViewById(R.id.activity_main_view_pager);
+        //TabLayout tabs= (TabLayout)findViewById(R.id.tab_layout);
+        //tabs.setupWithViewPager(mViewPager);
+        //tabs.setTabMode(TabLayout.MODE_FIXED);
+    }
     @Override
     public void onBackPressed() {
         if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){

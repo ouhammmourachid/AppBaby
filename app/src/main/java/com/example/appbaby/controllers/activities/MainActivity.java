@@ -1,23 +1,31 @@
 package com.example.appbaby.controllers.activities;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.os.Bundle;
-import android.view.MenuItem;
-
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.appbaby.R;
+import com.example.appbaby.controllers.adapter.AnimalsAdapter;
+import com.example.appbaby.controllers.adapter.NumbersAdapter;
 import com.google.android.material.navigation.NavigationView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
     private NavigationView mNavigationView;
+
+    @BindView(R.id.activity_main_view_pager) ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         configureToolBar();
         configureDrawerLayout();
         configureNavigationView();
+        ButterKnife.bind(this);
     }
     private void configureNavigationView() {
         mNavigationView = (NavigationView) findViewById(R.id.activity_main_nav_view);
@@ -61,7 +70,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.activity_main_drawer_animals:
+                mViewPager.setAdapter(new AnimalsAdapter(getSupportFragmentManager()));
+                break;
+            case R.id.activity_main_drawer_numbers:
+                mViewPager.setAdapter(new NumbersAdapter(getSupportFragmentManager()));
+                break;
+            default:
+                break;
+        }
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         return false;
     }
-
 }

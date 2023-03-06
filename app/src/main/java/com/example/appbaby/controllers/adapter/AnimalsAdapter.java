@@ -4,13 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.appbaby.controllers.fragments.AnimalFragment;
+import com.example.appbaby.models.Animals;
 
-public class AnimalsAdapter extends FragmentPagerAdapter {
-
-    private String[] animals = {"Cat","dog"};
+public class AnimalsAdapter extends FragmentStatePagerAdapter {
+    private String[] animals = {"Cat","Dog"};
 
     public AnimalsAdapter(@NonNull FragmentManager fm) {
         super(fm);
@@ -19,7 +19,8 @@ public class AnimalsAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return AnimalFragment.newInstance(animals[position]);
+        String animalName = animals[position];
+        return AnimalFragment.newInstance(animalName,Animals.getResourceImageAnimalId(animalName));
     }
 
     @Override
@@ -32,4 +33,5 @@ public class AnimalsAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return animals[position];
     }
+
 }

@@ -2,6 +2,7 @@ package com.example.appbaby.controllers.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView mNavigationView;
 
     private ViewPager mViewPager;
+    private TabLayout tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        //mViewPager.dispatchWindowVisibilityChanged(View.GONE);
         switch (item.getItemId()){
             case R.id.activity_main_drawer_animals:
                 mViewPager.setAdapter(new AnimalsAdapter(getSupportFragmentManager()));

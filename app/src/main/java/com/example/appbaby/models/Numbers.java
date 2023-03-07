@@ -2,7 +2,15 @@ package com.example.appbaby.models;
 
 import com.example.appbaby.R;
 
+/**
+ * thi class contain two static function to access image and audio resources for the numbers 0,1,..,9.
+ */
 public class Numbers {
+    /**
+     * get the identifier of images of the number by this static function.
+     * @param number
+     * @return the identifier in the drawable resource file .
+     */
     public static int getResourceImageNumberId(int number){
         switch (number){
             case 0:
@@ -27,6 +35,12 @@ public class Numbers {
                 return R.drawable.i9;
         }
     }
+
+    /**
+     * get the identifier of sound of number using this static function.
+     * @param number
+     * @return the identifier in the raw resource file .
+     */
     public static int getResourceRawNumberId(int number){
         switch (number){
             case 1:

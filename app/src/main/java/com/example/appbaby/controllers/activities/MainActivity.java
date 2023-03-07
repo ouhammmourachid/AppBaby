@@ -17,32 +17,31 @@ import com.example.appbaby.controllers.adapter.NumbersAdapter;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private Toolbar mToolbar;
-    private DrawerLayout mDrawerLayout;
-    private NavigationView mNavigationView;
-
-    private ViewPager mViewPager;
-    private TabLayout tabs;
-
+    @BindView(R.id.activity_main_tool_bar) Toolbar mToolbar;
+    @BindView(R.id.activity_main_drawer_layout) DrawerLayout mDrawerLayout;
+    @BindView(R.id.activity_main_nav_view) NavigationView mNavigationView;
+    @BindView(R.id.activity_main_view_pager) ViewPager mViewPager;
+    //@BindView(R.id.tab_layout) TabLayout tabs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        // configuration:
+        // configuration functions.
         configureToolBar();
         configureDrawerLayout();
         configureNavigationView();
         configureViewPagerAndTabs();
     }
     private void configureNavigationView() {
-        mNavigationView = (NavigationView) findViewById(R.id.activity_main_nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
     }
-
     private void configureDrawerLayout() {
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.activity_main_drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 mDrawerLayout,
@@ -53,12 +52,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
     }
     private void configureToolBar() {
-        mToolbar = (Toolbar) findViewById(R.id.activity_main_tool_bar);
         setSupportActionBar(mToolbar);
     }
     private void configureViewPagerAndTabs(){
-        mViewPager = (ViewPager)findViewById(R.id.activity_main_view_pager);
-        //TabLayout tabs= (TabLayout)findViewById(R.id.tab_layout);
         //tabs.setupWithViewPager(mViewPager);
         //tabs.setTabMode(TabLayout.MODE_FIXED);
     }
@@ -70,10 +66,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        //mViewPager.dispatchWindowVisibilityChanged(View.GONE);
         switch (item.getItemId()){
             case R.id.activity_main_drawer_animals:
                 mViewPager.setAdapter(new AnimalsAdapter(getSupportFragmentManager()));

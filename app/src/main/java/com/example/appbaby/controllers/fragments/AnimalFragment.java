@@ -2,14 +2,12 @@ package com.example.appbaby.controllers.fragments;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.fragment.app.Fragment;
 
 import com.example.appbaby.R;
 
@@ -17,6 +15,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * this class is responsible of display a fragment that contain an image of animal and display sound
+ * when it had been clicked .
+ */
 public class AnimalFragment extends Fragment {
 
     private static final String KEY_ANIMAL = "KEY_ANIMAL";
@@ -32,11 +34,18 @@ public class AnimalFragment extends Fragment {
     public AnimalFragment() {
         // Required empty public constructor
     }
+
+    /**
+     * handle the click using butter knife library so that when i click the first time it display
+     * sound  and if for the second time and the sound is playing we stop it .
+     */
     @OnClick(R.id.fragment_container_image)
     public void click(){
+        // handle if the player is playing and the other case .
         if(!mPlayer.isPlaying()){
             mPlayer.start();
         }else {
+
             mPlayer.stop();
             mPlayer = MediaPlayer.create(getContext(),mMediaPlayerId);
         }

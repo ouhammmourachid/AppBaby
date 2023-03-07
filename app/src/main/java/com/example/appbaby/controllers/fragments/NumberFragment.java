@@ -2,7 +2,6 @@ package com.example.appbaby.controllers.fragments;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +15,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
+/**
+ * this class is responsible of displaying fragment that contain an image of a number
+ * and how to pronounce it in english of course .
+ */
 public class NumberFragment extends Fragment {
 
     private static final String NUMBER_KEY = "NUMBER_KEY";
@@ -41,6 +43,7 @@ public class NumberFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,12 @@ public class NumberFragment extends Fragment {
             mMediaPlayerId = getArguments().getInt(KEY_MEDIA_PLAYER_ID);
         }
     }
+
+    /**
+     * handle the click on an image of number by playing the corresponding mp3 file from raw
+     * resource .and we add also some logic so that the first click on the button start playing
+     * the sound and the second one stopping if it is steel playing .
+     */
     @OnClick(R.id.fragment_container_image)
     public void click(){
         if(!mPlayer.isPlaying()){

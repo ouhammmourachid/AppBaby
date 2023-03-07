@@ -9,13 +9,14 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.appbaby.controllers.fragments.AnimalFragment;
 import com.example.appbaby.models.Animals;
 
+/**
+ * this adapter is for despising and managing our animal fragment in the page viewer .
+ */
 public class AnimalsAdapter extends FragmentStatePagerAdapter {
     private String[] animals = {"Cat","Dog"};
-
     public AnimalsAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
-
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -24,12 +25,10 @@ public class AnimalsAdapter extends FragmentStatePagerAdapter {
                 Animals.getResourceImageAnimalId(animalName),
                 Animals.getResourceRawAnimalId(animalName));
     }
-
     @Override
     public int getCount() {
         return animals.length;
     }
-
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

@@ -9,11 +9,13 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.appbaby.controllers.fragments.NumberFragment;
 import com.example.appbaby.models.Numbers;
 
+/**
+ * this class represent the controller and the manager for despising numbers fragment on pageViewer.
+ */
 public class NumbersAdapter extends FragmentStatePagerAdapter {
     public NumbersAdapter(@NonNull FragmentManager fm) {
         super(fm);
     }
-
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -22,12 +24,10 @@ public class NumbersAdapter extends FragmentStatePagerAdapter {
                 Numbers.getResourceImageNumberId(position),
                 Numbers.getResourceRawNumberId(position));
     }
-
     @Override
     public int getCount() {
         return 10;
     }
-
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

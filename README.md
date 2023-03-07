@@ -1,6 +1,9 @@
 # AppBaby:
 this app is meant for helping babies to learn numbers and animal and there sound.
 
+### contribute to this repo:
+`git clone https://github.com/ouhammmourachid/AppBaby.git`
+
 ### Screenshots of our app:
 <div>
   <img src='./assets/Screenshot_20230307_173240.png' alt="first image" width="250" height="auto"/>

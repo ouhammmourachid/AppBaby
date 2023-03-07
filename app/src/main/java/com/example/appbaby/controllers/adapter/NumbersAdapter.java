@@ -17,7 +17,10 @@ public class NumbersAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return NumberFragment.newInstance(position,Numbers.getResourceImageNumberId(position));
+        return NumberFragment.newInstance(
+                position,
+                Numbers.getResourceImageNumberId(position),
+                Numbers.getResourceRawNumberId(position));
     }
 
     @Override
